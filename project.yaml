@@ -1,0 +1,16 @@
+--- #project playbook
+- hosts: dev
+  connection: ssh 
+  user: root
+  become: yes
+  
+  tasks:
+   - name: install git
+     action: yum pkg=git state=present
+   - name: install docker 
+     action: yum pkg=docker state=present
+   - name: start docker 
+     service:
+       name: docker 
+       state: started
+
